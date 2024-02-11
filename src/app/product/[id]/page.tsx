@@ -1,0 +1,34 @@
+import { singleProduct } from "@/data";
+import Image from "next/image";
+import React from "react";
+import Price from "@/app/_components/price";
+
+const SingleProductPage = () => {
+  return (
+    <div className="flex h-screen flex-col justify-around p-4 text-red-500 md:flex-row lg:px-20 xl:px-40">
+      {/* IMAGE CONTAINER */}
+      {singleProduct.img && (
+        <div className="relative w-full h-1/2">
+          <Image
+            src={singleProduct.img}
+            alt=""
+            className="object-contain"
+            fill
+          />
+        </div>
+      )}
+      {/* TEXT CONTAINER  */}
+      <div className="h-1/2 flex flex-col gap-4">
+        <h1 className="text-3xl font-bold uppercase">{singleProduct.title}</h1>
+        <p>{singleProduct.desc}</p>
+        <Price
+          price={singleProduct.price}
+          id={singleProduct.id}
+          options={singleProduct.options}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default SingleProductPage;
