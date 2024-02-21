@@ -9,10 +9,10 @@ type request = {
 };
 
 const CategoryPage = async (req: request) => {
-  const data = await api.product.getCategory.query(req.params.category);
+  const items = await api.product.getByCategory.query(req.params.category);
   return (
     <div className="flex flex-wrap text-red-500">
-      {data.map((item) => (
+      {items.map((item) => (
         <Link
           className="group flex h-[60vh] w-full flex-col justify-between border-b-2 border-r-2 border-red-500 p-4 even:bg-fuchsia-50 sm:w-1/2 lg:w-1/3"
           href={`/product/${item.id}`}

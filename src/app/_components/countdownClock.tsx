@@ -3,7 +3,8 @@
 import React from 'react'
 import Countdown from 'react-countdown';
 
-const endingDate = new Date("2024-02-15");
+const currentDate = new Date().getTime();
+const endingDate = new Date(currentDate + 48 * 60 * 60 * 1000);
 
 const CountdownClock = () => {
   return (

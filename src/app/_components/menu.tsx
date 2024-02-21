@@ -4,6 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import CartIcon from "./cartIcon";
+import { signOut } from "next-auth/react";
+
+type Props = {
+  session: boolean;
+};
 
 const links = [
   { id: 1, title: "Homepage", url: "/" },
@@ -12,11 +17,8 @@ const links = [
   { id: 4, title: "Contact", url: "/" },
 ];
 
-const Menu = () => {
+const Menu = ({ session }: Props) => {
   const [open, setopen] = useState(false);
-
-  /* fake user for dev purposes only */
-  const user = false;
   return (
     <div>
       {!open ? (
@@ -43,14 +45,19 @@ const Menu = () => {
               {item.title}
             </Link>
           ))}
-          {!user ? (
+          {!session ? (
             <Link href="/login" onClick={() => setopen(false)}>
               Login
             </Link>
           ) : (
-            <Link href="/orders" onClick={() => setopen(false)}>
-              Orders
-            </Link>
+            <div>
+              <Link href="/orders" onClick={() => setopen(false)}>
+                Orders
+              </Link>
+              <div className="mt-7 cursor-pointer" onClick={() => signOut()}>
+                Logout
+              </div>
+            </div>
           )}
           <Link href="/cart" onClick={() => setopen(false)}>
             <CartIcon />

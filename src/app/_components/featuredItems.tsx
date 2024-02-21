@@ -1,14 +1,15 @@
-import { featuredProducts } from "@/data";
 import Image from "next/image";
 import React from "react";
+import { api } from "@/trpc/server";
 
-const FeaturedItems = () => {
+const FeaturedItems = async () => {
+  const featuredItems = await api.product.getFeatured.query();
   return (
     <div className="w-screen overflow-x-scroll text-red-500">
       {/* WRAPPER  */}
       <div className="flex w-max">
         {/* SINGLE ITEM  */}
-        {featuredProducts.map((item) => (
+        {featuredItems.map((item) => (
           <div
             key={item.id}
             className="flex h-[60vh] w-screen flex-col items-center justify-around p-4 text-center transition-all duration-300 hover:bg-fuchsia-50 md:w-[50vh] xl:h-[90vh] xl:w-[33vw]"

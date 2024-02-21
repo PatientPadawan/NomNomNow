@@ -1,11 +1,12 @@
 "use client";
 
+import { JSONValue } from "node_modules/superjson/dist/types";
 import React, { useState, useEffect } from "react";
 
 type Props = {
   price: number;
-  id: number;
-  options?: { title: string; additionalPrice: number }[];
+  id: string;
+  options?: JSONValue[];
 };
 
 const Price = ({ price, id, options }: Props) => {

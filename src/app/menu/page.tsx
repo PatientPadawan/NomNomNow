@@ -2,13 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { api } from "@/trpc/server";
 
-const getData = async () => await api.category.getAll.query();
-
 const MenuPage = async () => {
-  const menu = await getData();
+  const categories = await api.category.getAll.query();
   return (
     <div className="lx:px-40 flex h-[calc(100vh-6rem)] flex-col items-center p-4 md:h-[calc(100vh-9rem)] md:flex-row lg:px-20">
-      {menu.map((category) => (
+      {categories.map((category) => (
         <Link
           href={`/menu/${category.slug}`}
           key={category.id}

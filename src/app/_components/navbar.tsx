@@ -3,33 +3,34 @@ import Menu from "./menu";
 import CartIcon from "./cartIcon";
 import Link from "next/link";
 import Image from "next/image";
+import UserLinks from "./userLinks";
+import { getServerAuthSession } from "@/server/auth";
 
-const Navbar = () => {
-  //  FAKE USER FOR DEV ONLY
-  const user = false;
+const Navbar = async () => {
+  const session = await getServerAuthSession();
   return (
     <div className="flex h-12 items-center justify-between border-b-2 border-b-red-500 p-4 uppercase text-red-500 md:h-24">
       {/* LEFT LINKS */}
-      <div className="hidden md:flex gap-4 flex-1">
-        <Link href="/">Homepage</Link>
+      <div className="hidden flex-1 gap-4 md:flex">
+        <Link href="/">Home</Link>
         <Link href="/menu">Menu</Link>
         <Link href="/">Contact</Link>
       </div>
       {/* LOGO */}
-      <div className="text-xl md:font-bold flex-1 md:text-center">
+      <div className="flex-1 text-xl md:text-center md:font-bold">
         <Link href="/">qwikbite</Link>
       </div>
       {/* MOBILE MENU */}
       <div className="md:hidden">
-        <Menu />
+        <Menu session={session ? true : false} />
       </div>
       {/* RIGHT LINKS */}
-      <div className="hidden md:flex gap-4 items-center justify-end flex-1">
-        <div className="md:absolute top-3 right-2 lg:static flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md">
+      <div className="hidden flex-1 items-center justify-end gap-4 md:flex">
+        <div className="right-2 top-3 flex cursor-pointer items-center gap-2 rounded-md bg-orange-300 px-1 md:absolute lg:static">
           <Image src="/phone.png" alt="phone number" width={20} height={20} />
           <span>888 438 8439</span>
         </div>
-        {!user ? <Link href="/">Login</Link> : <Link href="/menu">Orders</Link>}
+        <UserLinks session={session ? true : false} />
         <CartIcon />
       </div>
     </div>
