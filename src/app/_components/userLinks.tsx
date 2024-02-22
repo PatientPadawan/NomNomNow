@@ -14,7 +14,7 @@ const UserLinks = ({ session }: Props) => {
         <Link href="/login">Login</Link>
       ) : (
         <div>
-          <Link href="/menu">Orders</Link>
+          <Link href="/orders">Orders</Link>
           <span className="ml-4 cursor-pointer" onClick={() => signOut()}>
             Logout
           </span>
