@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import { api } from "@/trpc/server";
 
 const FeaturedItems = async () => {
@@ -26,7 +25,9 @@ const FeaturedItems = async () => {
                 {item.title}
               </h1>
               <p className="p-4 2xl:p-8">{item.desc}</p>
-              <span className="text-xl font-bold">${item.price.toFixed(2)}</span>
+              <span className="text-xl font-bold">
+                ${item.price.toFixed(2)}
+              </span>
               <button className="rounded-md bg-red-500 p-2 text-white">
                 Add to Cart
               </button>

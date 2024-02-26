@@ -1,12 +1,11 @@
 import Image from "next/image";
-import React from "react";
 import CountdownClock from "./countdownClock";
 
 const Offer = () => {
   return (
-    <div className="flex h-screen flex-col bg-black md:flex-row md:justify-between md:bg-[url('/offerBg.png')] md:h-[70vh]">
+    <div className="flex h-screen flex-col bg-black md:h-[70vh] md:flex-row md:justify-between md:bg-[url('/offerBg.png')]">
       {/* TEXT CONTAINER  */}
-      <div className="flex flex-1 flex-col items-center justify-center text-center gap-8 p-6">
+      <div className="flex flex-1 flex-col items-center justify-center gap-8 p-6 text-center">
         <h1 className="bold text-5xl text-white xl:text-6xl">
           Delicious Burger & French Fries
         </h1>
@@ -15,10 +14,12 @@ const Offer = () => {
           feast delivered straight to your door. Satisfaction guaranteed!
         </p>
         <CountdownClock />
-        <button className="bg-red-500 text-white rounded-md py-3 px-6">Order Now</button>
+        <button className="rounded-md bg-red-500 px-6 py-3 text-white">
+          Order Now
+        </button>
       </div>
       {/* IMAGE CONTAINER  */}
-      <div className="flex-1 relative w-full md:h-full">
+      <div className="relative w-full flex-1 md:h-full">
         <Image src="/offerProduct.png" alt="" fill className="object-contain" />
       </div>
     </div>

@@ -36,7 +36,7 @@ export default async function RootLayout({
           <Navbar />
           {children}
           <Footer />
-          <ToastContainer position="bottom-right" theme="colored" autoClose={3000}/>
+          <ToastContainer position="bottom-right" autoClose={3000}/>
         </TRPCReactProvider>
       </body>
     </html>

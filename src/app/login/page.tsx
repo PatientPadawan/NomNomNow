@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 const LoginPage = async () => {
   const session = await getServerAuthSession();
   if (session) redirect("/menu");
-  
+
   return (
     <div className="flex h-[calc(100vh-6rem)] items-center justify-center p-4 md:h-[calc(100vh-9rem)]">
       <div className="flex flex-col rounded-md shadow-2xl md:h-[70%] md:w-full md:flex-row lg:w-[60%] 2xl:w-1/2">

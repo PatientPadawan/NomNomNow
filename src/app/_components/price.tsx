@@ -1,26 +1,20 @@
 "use client";
 
-import { JSONValue } from "node_modules/superjson/dist/types";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useCartStore } from "../utils/store";
+import { toast } from "react-toastify";
+import { ProductType } from "../types/types";
 
-type Props = {
-  product: {
-    price: number;
-    id?: string;
-    createdAt?: Date;
-    title?: string;
-    desc?: string;
-    img?: string | null;
-    isFeatured?: boolean;
-    options?: JSONValue[];
-    catSlug?: string;
-  };
-};
-
-const Price = ({ product }: Props) => {
+const Price = ({ product }: ProductType) => {
   const [total, setTotal] = useState(product.price);
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
+
+  const { addToCart } = useCartStore();
+
+  useEffect(() => {
+    useCartStore.persist.rehydrate();
+  }, []);
 
   useEffect(() => {
     setTotal(
@@ -30,6 +24,21 @@ const Price = ({ product }: Props) => {
           : product.price),
     );
   }, [quantity, selected, product]);
+
+  const handleCart = () => {
+    addToCart({
+      id: product.id!,
+      title: product.title!,
+      img: product.img!,
+      price: total,
+      ...(product.options?.length && {
+        optionTitle: product.options[selected].title,
+      }),
+      quantity: quantity,
+    });
+
+    toast("The product has been added to your cart!");
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -71,7 +80,10 @@ const Price = ({ product }: Props) => {
           </div>
         </div>
         {/* ADD2CART BUTTON  */}
-        <button className="w-56 bg-red-500 p-3 uppercase text-white ring-1 ring-red-500">
+        <button
+          className="w-56 bg-red-500 p-3 uppercase text-white ring-1 ring-red-500"
+          onClick={handleCart}
+        >
           Add to Cart
         </button>
       </div>

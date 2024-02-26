@@ -1,4 +1,3 @@
-import React from "react";
 import Menu from "./menu";
 import CartIcon from "./cartIcon";
 import Link from "next/link";
@@ -26,7 +25,7 @@ const Navbar = async () => {
       </div>
       {/* RIGHT LINKS */}
       <div className="hidden flex-1 items-center justify-end gap-4 md:flex">
-        <div className="right-2 top-3 flex cursor-pointer items-center gap-2 rounded-md bg-orange-300 px-1 md:absolute lg:static">
+        <div className="right-2 top-3 flex cursor-pointer items-center gap-2 rounded-md bg-orange-300 px-1 md:absolute lg:static lg:px-5">
           <Image src="/phone.png" alt="phone number" width={20} height={20} />
           <span>888 438 8439</span>
         </div>

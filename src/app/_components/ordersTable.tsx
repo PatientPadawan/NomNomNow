@@ -26,13 +26,18 @@ const OrdersTable = () => {
   return (
     <tbody>
       {data.map((order) => (
-        <tr className={`${order.status !=="Delivered" && 'bg-red-50'} text-sm md:text-base`} key={order.id}>
+        <tr
+          className={`${order.status !== "Delivered" && "bg-red-50"} text-sm md:text-base`}
+          key={order.id}
+        >
           <td className="hidden px-1 py-6 md:table-cell md:text-center">
             {order.id}
           </td>
           <td className="px-1 py-6">{order.createdAt.toDateString()}</td>
           <td className="px-1 py-6">{order.price.toString()}</td>
-          {/* <td className="hidden px-1 py-6 md:table-cell">{order.products[0].title}</td> */}
+          <td className="hidden px-1 py-6 md:table-cell">
+            {order.products[0].title}
+          </td>
           <td className="px-1 py-6">{order.status}</td>
         </tr>
       ))}

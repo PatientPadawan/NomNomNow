@@ -11,8 +11,8 @@ const SingleProductPage = async (req: request) => {
   const product = await api.product.getById.query(req.params.id);
   const serialProduct = {
     ...product,
-    price: product!.price.toNumber()
-  }
+    price: product!.price.toNumber(),
+  };
 
   return (
     <div className="flex h-screen flex-col justify-around p-4 text-red-500 md:flex-row md:items-center md:gap-8 lg:px-20 xl:px-40">
@@ -28,9 +28,7 @@ const SingleProductPage = async (req: request) => {
           {product!.title}
         </h1>
         <p>{product!.desc}</p>
-        <Price
-          product={serialProduct}
-        />
+        <Price product={serialProduct} />
       </div>
     </div>
   );
