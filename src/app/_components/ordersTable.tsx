@@ -34,9 +34,9 @@ const OrdersTable = () => {
             {order.id}
           </td>
           <td className="px-1 py-6">{order.createdAt.toDateString()}</td>
-          <td className="px-1 py-6">{order.price.toString()}</td>
+          <td className="px-1 py-6">{parseFloat(order.price).toFixed(2)}</td>
           <td className="hidden px-1 py-6 md:table-cell">
-            {order.products[0].title}
+            {order.products.map((item) => `${item.title}(${item.quantity}), `)}
           </td>
           <td className="px-1 py-6">{order.status}</td>
         </tr>

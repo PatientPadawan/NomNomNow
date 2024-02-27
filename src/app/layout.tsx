@@ -8,7 +8,8 @@ import Navbar from "./_components/navbar";
 import Footer from "./_components/footer";
 import { getServerAuthSession } from "@/server/auth";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import AuthContext from "./authContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,11 +33,13 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <TRPCReactProvider>
-          <Notification />
-          <Navbar />
-          {children}
-          <Footer />
-          <ToastContainer position="bottom-right" autoClose={3000}/>
+          <AuthContext>
+            <Notification />
+            <Navbar />
+            {children}
+            <Footer />
+            <ToastContainer position="bottom-right" autoClose={3000} />
+          </AuthContext>
         </TRPCReactProvider>
       </body>
     </html>
