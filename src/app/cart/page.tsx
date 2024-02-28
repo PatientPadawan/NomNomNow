@@ -49,7 +49,7 @@ const CartPage = () => {
                 <Image src={item.img} alt="" width={100} height={100} />
               )}
               <div>
-                <h1 className="text-xl font-bold uppercase">
+                <h1 className="text-l font-bold uppercase md:text-xl">
                   {item.title} x{item.quantity}
                 </h1>
                 <span>{item.optionTitle}</span>

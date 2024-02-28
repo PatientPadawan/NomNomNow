@@ -1,6 +1,8 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const data = [
@@ -23,6 +25,7 @@ const data = [
 
 const Slider = () => {
   const [currentSlide, setcurrentSlide] = useState(0);
+  const { data: session } = useSession();
 
   useEffect(() => {
     const i = setInterval(
@@ -41,7 +44,9 @@ const Slider = () => {
         <h1 className="p-4 text-center text-5xl uppercase md:p-10 md:text-6xl xl:text-7xl">
           {data[currentSlide]?.title}
         </h1>
-        <button className="bg-red-500 px-8 py-4 text-white">Order Now</button>
+        <Link className="bg-red-500 px-8 py-4 text-white" href={session ? '/cart' : '/menu'}>
+          Order Now
+        </Link>
       </div>
       {/* IMAGE CONTAINER  */}
       <div className="relative w-full flex-1">

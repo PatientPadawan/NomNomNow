@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import CartIcon from "./cartIcon";
 import { signOut } from "next-auth/react";
+import { useCartStore } from "../utils/store";
 
 type Props = {
   session: boolean;
@@ -19,6 +20,11 @@ const links = [
 
 const Menu = ({ session }: Props) => {
   const [open, setopen] = useState(false);
+  const handleSignOut = () => {
+    useCartStore.persist.clearStorage();
+    signOut();
+  };
+  
   return (
     <div>
       {!open ? (
@@ -54,7 +60,10 @@ const Menu = ({ session }: Props) => {
               <Link href="/orders" onClick={() => setopen(false)}>
                 Orders
               </Link>
-              <div className="mt-7 cursor-pointer" onClick={() => signOut()}>
+              <div
+                className="mt-7 cursor-pointer"
+                onClick={() => handleSignOut()}
+              >
                 Logout
               </div>
             </div>

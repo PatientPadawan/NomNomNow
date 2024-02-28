@@ -1,7 +1,9 @@
 import { z } from "zod";
 
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import { env } from "@/env";
+
+const stripe = require("stripe")(env.STRIPE_SECRET_KEY);
 
 export const intentRouter = createTRPCRouter({
   createIntent: protectedProcedure
