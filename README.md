@@ -35,7 +35,7 @@ To install and run QwikBite locally, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/QwikBite.git
+git clone https://github.com/PatientPadawan/QwikBite.git
 cd QwikBite
 npm install
 ```
