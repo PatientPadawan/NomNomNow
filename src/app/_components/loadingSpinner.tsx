@@ -1,7 +1,7 @@
 const LoadingSpinner = () => {
   return (
     <div
-      className="py-10 md:translate-x-[calc(10vw)] md:transform xl:translate-x-[calc(15vw)] 2xl:translate-x-[calc(20vw)]"
+      className="py-10"
       role="status"
     >
       <svg

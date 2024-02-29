@@ -43,10 +43,9 @@ const PayPage = ({ params }: { params: { id: string } }) => {
   };
 
   return (
-    <div className="flex justify-center p-4 md:block md:w-1/2 md:mx-auto">
-      {isLoading && (
-        <LoadingSpinner />
-      )}
+    <div className="p-4">
+      {error && `We're sorry an error has occured!`}
+      {isLoading && <div className="w-full flex flex-col justify-center items-center"><LoadingSpinner /></div>}
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

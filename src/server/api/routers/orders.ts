@@ -9,21 +9,6 @@ export const orderRouter = createTRPCRouter({
     });
     return orders;
   }),
-  updateOrderIntent: protectedProcedure
-    .input(
-      z.object({
-        orderId: z.string(),
-        paymentId: z.string(),
-      }),
-    )
-    .mutation(async ({ ctx, input }) => {
-      return ctx.db.order.update({
-        where: {
-          id: input.orderId,
-        },
-        data: { intent_id: input.paymentId },
-      });
-    }),
   createOrder: protectedProcedure
     .input(
       z.object({
@@ -54,6 +39,36 @@ export const orderRouter = createTRPCRouter({
           userId: input.user.id,
           products: input.products,
         },
+      });
+    }),
+  updateOrderIntent: protectedProcedure
+    .input(
+      z.object({
+        orderId: z.string(),
+        paymentId: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      return ctx.db.order.update({
+        where: {
+          id: input.orderId,
+        },
+        data: { intent_id: input.paymentId },
+      });
+    }),
+  updateOrderStatus: protectedProcedure
+    .input(
+      z.object({
+        intent_id: z.string(),
+        status: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      return ctx.db.order.update({
+        where: {
+          intent_id: input.intent_id,
+        },
+        data: { status: input.status },
       });
     }),
 });

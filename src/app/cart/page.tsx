@@ -6,6 +6,7 @@ import { useCartStore } from "../utils/store";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { api } from "@/trpc/react";
+import Link from "next/link";
 
 const CartPage = () => {
   const { products, totalItems, totalPrice, removeFromCart } = useCartStore();
@@ -64,7 +65,9 @@ const CartPage = () => {
             </div>
           ))
         ) : (
-          <h2 className="m-auto">No items yet! Check out our awesome bites</h2>
+          <Link className="m-auto cursor-pointer" href={"/menu"}>
+            <h3>No items yet! Check out our awesome bites</h3>
+          </Link>
         )}
       </div>
       {/* PAYMENT CONTAINER  */}
@@ -89,6 +92,7 @@ const CartPage = () => {
         <button
           className="w-1/2 self-end rounded-md bg-red-500 p-3 text-white md:w-1/3 lg:w-3/4 2xl:w-1/3"
           onClick={handleCheckout}
+          disabled={totalItems <= 0}
         >
           CHECKOUT
         </button>

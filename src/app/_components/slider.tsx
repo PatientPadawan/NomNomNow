@@ -44,7 +44,7 @@ const Slider = () => {
         <h1 className="p-4 text-center text-5xl uppercase md:p-10 md:text-6xl xl:text-7xl">
           {data[currentSlide]?.title}
         </h1>
-        <Link className="bg-red-500 px-8 py-4 text-white" href={session ? '/cart' : '/menu'}>
+        <Link className="bg-red-500 px-8 py-4 text-white cursor-pointer" href={session ? '/cart' : '/menu'}>
           Order Now
         </Link>
       </div>

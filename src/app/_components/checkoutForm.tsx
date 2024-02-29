@@ -6,7 +6,9 @@ import {
   PaymentElement,
   useStripe,
   useElements,
+  LinkAuthenticationElement,
 } from "@stripe/react-stripe-js";
+import AddressForm from "./addressForm";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -46,12 +48,11 @@ const CheckoutForm = () => {
     });
   }, [stripe]);
 
-  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
       // Stripe.js hasn't yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
@@ -71,7 +72,7 @@ const CheckoutForm = () => {
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message!);
+      setMessage(error.message || "Something went wrong");
     } else {
       setMessage("An unexpected error occurred.");
     }
@@ -80,17 +81,25 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <form
+      id="payment-form"
+      onSubmit={handleSubmit}
+      className="flex min-h-[calc(100vh-6rem)] flex-col gap-8 p-4 md:min-h-[calc(100vh-15rem)] lg:px-20 xl:px-40"
+    >
+      <LinkAuthenticationElement id="link-authentication-element" />
       <PaymentElement
         id="payment-element"
         options={{
           layout: "tabs",
         }}
       />
-      <button className="cursor-pointer" disabled={isLoading || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-        </span>
+      <AddressForm />
+      <button
+        className="w-28 rounded-md bg-red-500 p-4 text-white"
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+      >
+        <span id="button-text">Pay now</span>
       </button>
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
