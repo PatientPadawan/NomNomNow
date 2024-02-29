@@ -1,28 +1,49 @@
-# Create T3 App
+# QwikBite - Full Stack Restaurant/Food Delivery App
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+QwikBite is a food ordering app designed for restaurants to streamline their food delivery services. It leverages modern technologies to provide a seamless experience for both restaurant owners and customers.
 
-## What's next? How do I make an app with this?
+## Overview
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+QwikBite is built using Next.js 13 and is a full-stack restaurant/food delivery application. It incorporates a variety of technologies including React, Next.js, Prisma, PostgreSQL, Auth.js, Stripe, Docker, tRPC, React Query, and Zustand to create a robust and feature-rich platform.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Technologies Used
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- Next.js 13
+- React
+- Prisma
+- PostgreSQL
+- Auth.js
+- Stripe
+- Docker
+- tRPC
+- React Query
+- Zustand
 
-## Learn More
+## Features
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- Streamlined food ordering process for customers
+- Restaurant management dashboard for owners
+- Integration with Stripe for secure payments
+- Authentication and authorization system using Auth.js
+- Containerized application deployment with Docker
+- Utilization of tRPC for efficient communication between server and client
+- React Query for managing server state and caching
+- Zustand for global state management
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Installation
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+To install and run QwikBite locally, follow these steps:
 
-## How do I deploy this?
+1. Clone the repository:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```bash
+git clone https://github.com/yourusername/QwikBite.git
+cd QwikBite
+npm install
+```
+## Set up environment variables
+Create a .env file based on the provided .env.example file.
+Fill in the required environment variables such as database credentials, Stripe API keys, etc.
+
+```bash
+npm run dev
