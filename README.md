@@ -22,10 +22,8 @@ QwikBite is built using Next.js 13 and is a full-stack restaurant/food delivery 
 ## Features
 
 - Streamlined food ordering process for customers
-- Restaurant management dashboard for owners
 - Integration with Stripe for secure payments
 - Authentication and authorization system using Auth.js
-- Containerized application deployment with Docker
 - Utilization of tRPC for efficient communication between server and client
 - React Query for managing server state and caching
 - Zustand for global state management
