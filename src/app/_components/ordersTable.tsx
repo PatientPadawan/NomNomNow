@@ -43,7 +43,7 @@ const OrdersTable = () => {
                 </td>
                 <td className="hidden px-1 py-6 md:table-cell">
                   {order.products.map(
-                    (item) => `${item.title}(${item.quantity}), `,
+                    (item) => `${item!.title}(${item!.quantity}), `,
                   )}
                 </td>
                 <td className="px-1 py-6">{order.status}</td>
