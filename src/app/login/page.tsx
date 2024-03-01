@@ -13,7 +13,7 @@ const LoginPage = async () => {
       <div className="flex flex-col rounded-md shadow-2xl md:h-[70%] md:w-full md:flex-row lg:w-[60%] 2xl:w-1/2">
         {/* IMAGE CONTAINER */}
         <div className="relative h-1/3 w-full md:h-full md:w-1/2">
-          <Image src="/loginbg.png" alt="" fill className="object-cover" />
+          <Image src="/loginBg.png" alt="" fill className="object-cover" />
         </div>
         {/* FORM CONTAINER  */}
         <div className="flex flex-col gap-8 p-10 md:w-1/2">
