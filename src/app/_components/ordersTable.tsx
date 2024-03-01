@@ -1,6 +1,7 @@
 "use client";
 
 import { api } from "@/trpc/react";
+import { OrderProductsType } from "../types/types";
 
 const OrdersTable = () => {
   const { isLoading, error, data } = api.order.getOrders.useQuery();
@@ -27,8 +28,12 @@ const OrdersTable = () => {
     <tbody>
       {data.length > 0
         ? data.map((order) => {
-            // converting Decimal to string
+            // converting type of Decimal to string
             const price = order.price as unknown as string;
+            // converting type of Prisma.JsonValue to object array
+            const products: OrderProductsType =
+              order.products as OrderProductsType;
+
             return (
               <tr
                 className={`${order.status !== "Delivered" && "bg-red-50"} text-sm md:text-base`}
@@ -38,13 +43,9 @@ const OrdersTable = () => {
                   {order.id}
                 </td>
                 <td className="px-1 py-6">{order.createdAt.toDateString()}</td>
-                <td className="px-1 py-6">
-                  {parseFloat(price).toFixed(2)}
-                </td>
+                <td className="px-1 py-6">{parseFloat(price).toFixed(2)}</td>
                 <td className="hidden px-1 py-6 md:table-cell">
-                  {order.products.map(
-                    (item) => `${item!.title}(${item!.quantity}), `,
-                  )}
+                  {products.map((item) => `${item.title}(${item.quantity}), `)}
                 </td>
                 <td className="px-1 py-6">{order.status}</td>
               </tr>

@@ -1,17 +1,17 @@
-import { JSONValue } from "node_modules/superjson/dist/types";
+import { Prisma } from "@prisma/client";
 
-export type ProductType = {
+export type ProductObject = {
   product: {
     price: number;
-    id?: string;
-    createdAt?: Date;
-    title?: string;
-    desc?: string;
-    img?: string | null;
-    isFeatured?: boolean;
-    options?: JSONValue[];
-    catSlug?: string;
-  };
+    id?: string | undefined;
+    createdAt?: Date | undefined;
+    title?: string | undefined;
+    desc?: string | undefined;
+    img?: string | null | undefined;
+    isFeatured?: boolean | undefined;
+    options?: Prisma.JsonValue[] | undefined;
+    catSlug?: string | undefined;
+  } | null;
 };
 
 export type CartItemType = {
@@ -28,6 +28,15 @@ export type CartType = {
   totalItems: number;
   totalPrice: number;
 };
+
+export type OrderProductsType = {
+  id: string;
+  img: string;
+  price: number;
+  title: string;
+  quantity: number;
+  optionTitle: string;
+}[];
 
 export type ActionTypes = {
   addToCart: (item: CartItemType) => void;

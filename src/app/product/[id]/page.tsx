@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Price from "@/app/_components/price";
 import { api } from "@/trpc/server";
+import { Product } from "@prisma/client";
 
 type request = {
   params: { id: string };
@@ -8,7 +9,9 @@ type request = {
 };
 
 const SingleProductPage = async (req: request) => {
-  const product = await api.product.getById.query(req.params.id);
+  const product: Product | null = await api.product.getById.query(
+    req.params.id,
+  );
   const serialProduct = {
     ...product,
     price: product!.price.toNumber(),

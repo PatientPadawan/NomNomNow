@@ -16,18 +16,18 @@ export const orderRouter = createTRPCRouter({
         products: z.array(
           z.object({
             id: z.string(),
-            img: z.string(),
-            optionTitle: z.string(),
-            price: z.number(),
-            quantity: z.number(),
             title: z.string(),
+            img: z.string().nullable().optional(),
+            price: z.number(),
+            optionTitle: z.string().nullable().optional(),
+            quantity: z.number(),
           }),
         ),
         user: z.object({
-          email: z.string(),
           id: z.string(),
-          image: z.string(),
-          name: z.string(),
+          email: z.string().nullable().optional(),
+          image: z.string().nullable().optional(),
+          name: z.string().nullable().optional(),
         }),
       }),
     )
