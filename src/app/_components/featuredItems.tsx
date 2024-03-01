@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { api } from "@/trpc/server";
+import Link from "next/link";
 
 const FeaturedItems = async () => {
   const featuredItems = await api.product.getFeatured.query();
@@ -28,9 +29,11 @@ const FeaturedItems = async () => {
               <span className="text-xl font-bold">
                 ${item.price.toFixed(2)}
               </span>
-              <button className="rounded-md bg-red-500 p-2 text-white">
-                Add to Cart
-              </button>
+              <Link href={`/product/${item.id}`}>
+                <button className="rounded-md bg-red-500 p-2 text-white">
+                  View
+                </button>
+              </Link>
             </div>
           </div>
         ))}
