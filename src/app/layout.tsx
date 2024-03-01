@@ -9,6 +9,8 @@ import Footer from "./_components/footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "./authContext";
+import { Suspense } from "react";
+import LoadingSkeleton from "./_components/loadingSkeleton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,7 +38,7 @@ export default async function RootLayout({
           <AuthContext>
             <Notification />
             <Navbar />
-            {children}
+            <Suspense fallback={<LoadingSkeleton />}>{children}</Suspense>
             <Footer />
             <ToastContainer position="bottom-right" autoClose={3000} />
           </AuthContext>

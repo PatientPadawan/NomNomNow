@@ -28,3 +28,5 @@ const MenuPage = async () => {
 };
 
 export default MenuPage;
+
+export const dynamic = "force-dynamic";
