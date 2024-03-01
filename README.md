@@ -28,20 +28,6 @@ QwikBite is built using Next.js 13 and is a full-stack restaurant/food delivery 
 - React Query for managing server state and caching
 - Zustand for global state management
 
-## Installation
+## Try it Out!
 
-To install and run QwikBite locally, follow these steps:
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/PatientPadawan/QwikBite.git
-cd QwikBite
-npm install
-```
-## Set up environment variables
-Create a .env file based on the provided .env.example file.
-Fill in the required environment variables such as database credentials, Stripe API keys, etc.
-
-```bash
-npm run dev
+Visit [QwikBite](https://qwik-bite.vercel.app/) to explore the website and test its features. You can sign in and use the app, including checkout with a test credit card. The test credit card number is `4242 4242 4242 4242`. Feel free to enter any other information as long as it's correctly formatted. Enjoy your experience with QwikBite!
