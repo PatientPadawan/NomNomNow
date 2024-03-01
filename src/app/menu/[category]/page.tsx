@@ -4,7 +4,7 @@ import { api } from "@/trpc/server";
 
 type request = {
   params: { category: string };
-  searchParams: {};
+  searchParams: object;
 };
 
 const CategoryPage = async (req: request) => {

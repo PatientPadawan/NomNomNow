@@ -17,7 +17,7 @@ const SuccessPage = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const order = await updateOrder.mutate({
+        updateOrder.mutate({
           intent_id: payment_intent!,
           status: "Paid",
         });

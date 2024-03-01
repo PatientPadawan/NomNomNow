@@ -5,11 +5,6 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {
-    typescript: {
-        // !!! Warning !!!
-        ignoreBuildErrors: true,
-    }
-};
+const config = {};
 
 export default config;

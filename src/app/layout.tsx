@@ -6,7 +6,6 @@ import { TRPCReactProvider } from "@/trpc/react";
 import Notification from "@/app/_components/notification";
 import Navbar from "./_components/navbar";
 import Footer from "./_components/footer";
-import { getServerAuthSession } from "@/server/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "./authContext";
@@ -27,11 +26,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const serverSession = await getServerAuthSession();
-
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={`font-sans ${inter.variable}`}>
+      <body
+        suppressHydrationWarning={true}
+        className={`font-sans ${inter.variable}`}
+      >
         <TRPCReactProvider>
           <AuthContext>
             <Notification />

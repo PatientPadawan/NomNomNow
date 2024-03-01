@@ -1,6 +1,7 @@
 import { create } from "zustand";
-import { ActionTypes, CartType } from "../types/types";
 import { persist } from "zustand/middleware";
+
+import type { ActionTypes, CartType } from "../types/types";
 
 const INITIAL_STATE = {
   products: [],

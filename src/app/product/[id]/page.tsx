@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Price from "@/app/_components/price";
 import { api } from "@/trpc/server";
-import { Product } from "@prisma/client";
+
+import type { Product } from "@prisma/client";
 
 type request = {
   params: { id: string };
-  searchParams: {};
+  searchParams: object;
 };
 
 const SingleProductPage = async (req: request) => {

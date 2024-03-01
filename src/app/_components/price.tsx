@@ -4,7 +4,8 @@
 import { useState, useEffect } from "react";
 import { useCartStore } from "../utils/store";
 import { toast } from "react-toastify";
-import { ProductObject } from "../types/types";
+
+import type { ProductObject } from "../types/types";
 
 const Price = ({ product }: ProductObject) => {
   const [total, setTotal] = useState(product!.price);

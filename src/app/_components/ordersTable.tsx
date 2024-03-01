@@ -1,7 +1,7 @@
 "use client";
 
 import { api } from "@/trpc/react";
-import { OrderProductsType } from "../types/types";
+import type { OrderProductsType } from "../types/types";
 
 const OrdersTable = () => {
   const { isLoading, error, data } = api.order.getOrders.useQuery();
@@ -10,7 +10,7 @@ const OrdersTable = () => {
     return (
       <tbody>
         <tr>
-          <td>"Loading..."</td>
+          <td>Loading...</td>
         </tr>
       </tbody>
     );
@@ -18,7 +18,7 @@ const OrdersTable = () => {
     return (
       <tbody>
         <tr>
-          <td>"Error..."</td>
+          <td>Error...</td>
         </tr>
       </tbody>
     );
